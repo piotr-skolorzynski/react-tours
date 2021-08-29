@@ -30,7 +30,7 @@ function App() {
   return (
       <main>
         {isLoading && <Loading />}
-        <Tours />
+        <Tours tours={tours}/>
       </main>
   );
 }
