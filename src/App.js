@@ -21,7 +21,6 @@ function App() {
       const tours = await response.json();
       setIsLoading(false);
       setTours(tours);
-      console.log(tours);
     } catch (error) {
       setIsLoading(false);
       console.log(error.message);
@@ -32,6 +31,17 @@ function App() {
     fetchTours();
   }, [])
 
+  if (tours.length === 0) {
+    return (
+      <main>
+        <div className="title">
+          <h2>no tours left</h2>
+          <button className="btn" onClick={ fetchTours }>refresh</button>
+        </div>
+      </main>
+    )
+  }
+  
   return (
       <main>
         {isLoading && <Loading />}
